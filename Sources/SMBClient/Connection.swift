@@ -23,7 +23,10 @@ public class Connection {
 
     // Set timeout 1 secs
     let options = NWProtocolTCP.Options()
-    options.connectionTimeout = 1
+    options.enableKeepalive   = true
+    options.keepaliveIdle     = 1   // start after 1 s of silence
+    options.keepaliveInterval = 1   // send every 1 s
+    options.keepaliveCount    = 1   // give up after 1 probes
     let params = NWParameters(tls: nil, tcp: options)
     connection = NWConnection(to: endpoint, using: params)
 
@@ -39,7 +42,10 @@ public class Connection {
 
     // Set timeout 1 secs
     let options = NWProtocolTCP.Options()
-    options.connectionTimeout = 1
+    options.enableKeepalive   = true
+    options.keepaliveIdle     = 1   // start after 1 s of silence
+    options.keepaliveInterval = 1   // send every 1 s
+    options.keepaliveCount    = 1   // give up after 1 probes
     let params = NWParameters(tls: nil, tcp: options)
     connection = NWConnection(to: endpoint, using: params)
 
