@@ -21,9 +21,9 @@ public class Connection {
       port: NWEndpoint.Port(integerLiteral: 445)
     )
 
-    // Set timeout 3 secs
+    // Set timeout 1 secs
     let options = NWProtocolTCP.Options()
-    options.connectionTimeout = 3
+    options.connectionTimeout = 1
     let params = NWParameters(tls: nil, tcp: options)
     connection = NWConnection(to: endpoint, using: params)
 
@@ -37,9 +37,9 @@ public class Connection {
       port: NWEndpoint.Port(rawValue: UInt16(port))!
     )
 
-    // Set timeout 3 secs
+    // Set timeout 1 secs
     let options = NWProtocolTCP.Options()
-    options.connectionTimeout = 3
+    options.connectionTimeout = 1
     let params = NWParameters(tls: nil, tcp: options)
     connection = NWConnection(to: endpoint, using: params)
 
