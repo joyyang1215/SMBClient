@@ -20,7 +20,13 @@ public class Connection {
       host: NWEndpoint.Host(host),
       port: NWEndpoint.Port(integerLiteral: 445)
     )
-    connection = NWConnection(to: endpoint, using: .tcp)
+
+    // Set timeout 3 secs
+    let options = NWProtocolTCP.Options()
+    options.connectionTimeout = 3
+    let params = NWParameters(tls: nil, tcp: options)
+    connection = NWConnection(to: endpoint, using: params)
+
     onDisconnected = { _ in }
   }
 
@@ -30,7 +36,13 @@ public class Connection {
       host: NWEndpoint.Host(host),
       port: NWEndpoint.Port(rawValue: UInt16(port))!
     )
-    connection = NWConnection(to: endpoint, using: .tcp)
+
+    // Set timeout 3 secs
+    let options = NWProtocolTCP.Options()
+    options.connectionTimeout = 3
+    let params = NWParameters(tls: nil, tcp: options)
+    connection = NWConnection(to: endpoint, using: params)
+
     onDisconnected = { _ in }
   }
 
